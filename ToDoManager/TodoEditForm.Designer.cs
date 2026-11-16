@@ -62,7 +62,6 @@
             this.FTxtContent.Name = "FTxtContent";
             this.FTxtContent.Size = new System.Drawing.Size(213, 60);
             this.FTxtContent.TabIndex = 3;
-            this.FTxtContent.TextChanged += new System.EventHandler(this.FTxtContent_TextChanged);
             // 
             // FDtpDueDate
             // 

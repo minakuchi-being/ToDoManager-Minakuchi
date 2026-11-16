@@ -50,9 +50,5 @@ namespace ToDoManager {
         /// </summary>
         private void FBtnSave_Click(object sender, EventArgs e) => SaveItem();
         #endregion
-
-        private void FTxtContent_TextChanged(object sender, EventArgs e) {
-
-        }
     }
 }

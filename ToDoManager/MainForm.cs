@@ -61,7 +61,7 @@ namespace ToDoManager {
                         } catch (InvalidOperationException wEx) {
                             MessageBox.Show(this, wEx.Message, "編集エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         } catch (Exception wEx) {
-                            MessageBox.Show(this, $"削除に失敗しました：{wEx.Message}", "システムエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(this, $"編集に失敗しました：{wEx.Message}", "システムエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -72,8 +72,7 @@ namespace ToDoManager {
         /// アイテムを削除
         /// </summary>
         private void DeleteItem() {
-            var wSelected = (TodoItem)FLstItems.SelectedItem;
-            if (wSelected == null) return;
+            if (!(FLstItems.SelectedItem is TodoItem wSelected)) return;
 
             var wConfirm = MessageBox.Show(this, $"「{wSelected.Title}」を削除しますか？", "削除確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (wConfirm != DialogResult.Yes) return;

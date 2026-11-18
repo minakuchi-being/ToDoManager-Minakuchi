@@ -74,7 +74,7 @@ namespace ToDoManager.Services {
         /// <param name="vId">ToDoアイテムのID</param>
         public void Delete(int vId) {
             int wTargetIndex = FItems.FindIndex(x => x.Id == vId);
-            if (wTargetIndex == -1) throw new InvalidOperationException("削除対象のToDoが存在しません。");
+            if (wTargetIndex < 0) throw new InvalidOperationException("削除対象のToDoが存在しません。");
 
             FItems.RemoveAt(wTargetIndex);
         }

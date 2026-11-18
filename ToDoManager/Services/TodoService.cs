@@ -71,13 +71,12 @@ namespace ToDoManager.Services {
         /// <summary>
         /// 既存のToDoアイテムをコレクションから削除
         /// </summary>
-        /// <param name="vId">ToDoアイテム</param>
-        /// <exception cref="InvalidOperationException"></exception>
+        /// <param name="vId">ToDoアイテムのID</param>
         public void Delete(int vId) {
-            TodoItem wExisting = FItems.FirstOrDefault(x => x.Id == vId);
-            if (wExisting == null) throw new InvalidOperationException("削除対象のToDoが存在しません。");
+            int wTargetIndex = FItems.FindIndex(x => x.Id == vId);
+            if (wTargetIndex == -1) throw new InvalidOperationException("削除対象のToDoが存在しません。");
 
-            FItems.Remove(wExisting);
+            FItems.RemoveAt(wTargetIndex);
         }
 
         /// <summary>

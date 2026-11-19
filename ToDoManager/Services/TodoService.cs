@@ -23,7 +23,6 @@ namespace ToDoManager.Services {
         }
 
         #region publicメソッド
-
         /// <summary>
         /// ToDoアイテムの一覧を取得する
         /// </summary>
@@ -70,6 +69,17 @@ namespace ToDoManager.Services {
         }
 
         /// <summary>
+        /// 既存のToDoアイテムをコレクションから削除
+        /// </summary>
+        /// <param name="vId">ToDoアイテムのID</param>
+        public void Delete(int vId) {
+            int wTargetIndex = FItems.FindIndex(x => x.Id == vId);
+            if (wTargetIndex < 0) throw new InvalidOperationException("削除対象のToDoが存在しません。");
+
+            FItems.RemoveAt(wTargetIndex);
+        }
+
+        /// <summary>
         /// XMLで保存
         /// </summary>
         public void Export() {
@@ -86,7 +96,6 @@ namespace ToDoManager.Services {
             var wSerializer = new XmlSerializer(typeof(List<TodoItem>));
             var wStreamReader = new StreamReader(C_FilePath);
             FItems = (List<TodoItem>)wSerializer.Deserialize(wStreamReader);
-
 
             FNextId = FItems.Any() ? FItems.Max(x => x.Id) + 1 : 1;
 

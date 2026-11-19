@@ -50,19 +50,19 @@ namespace ToDoManager {
         /// アイテムを編集
         /// </summary>
         private void EditItem() {
-            if (FLstItems.SelectedItem is TodoItem wSelected) {
-                using (var wForm = new TodoEditForm(wSelected)) {
-                    if (wForm.ShowDialog() == DialogResult.OK) {
-                        try {
-                            FService.AddOrUpdate(wForm.Item);
-                            UpdateList();
-                        } catch (ArgumentException wEx) {
-                            MessageBox.Show(this, wEx.Message, "入力エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        } catch (InvalidOperationException wEx) {
-                            MessageBox.Show(this, wEx.Message, "編集エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        } catch (Exception wEx) {
-                            MessageBox.Show(this, $"編集に失敗しました：{wEx.Message}", "システムエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+            if (!(FLstItems.SelectedItem is TodoItem wSelected)) return;
+
+            using (var wForm = new TodoEditForm(wSelected)) {
+                if (wForm.ShowDialog() == DialogResult.OK) {
+                    try {
+                        FService.AddOrUpdate(wForm.Item);
+                        UpdateList();
+                    } catch (ArgumentException wEx) {
+                        MessageBox.Show(this, wEx.Message, "入力エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    } catch (InvalidOperationException wEx) {
+                        MessageBox.Show(this, wEx.Message, "編集エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    } catch (Exception wEx) {
+                        MessageBox.Show(this, $"編集に失敗しました：{wEx.Message}", "システムエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

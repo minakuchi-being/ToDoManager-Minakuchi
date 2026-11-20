@@ -80,6 +80,22 @@ namespace ToDoManager.Services {
         }
 
         /// <summary>
+        /// ToDoアイテムのバリデート
+        /// </summary>
+        /// <param name="vItem">チェックするアイテム</param>
+        public void Validate(TodoItem vItem) {
+            if (vItem == null) throw new ArgumentNullException(nameof(vItem));
+
+            string wTitle = vItem.Title;
+            if (string.IsNullOrEmpty(wTitle)) throw new ArgumentException("タイトルを入力してください。");
+            if (wTitle.All(char.IsWhiteSpace)) throw new ArgumentException("タイトルに空白のみは設定できません。");
+            if (wTitle.Length > 20) throw new ArgumentException("タイトルは20文字以内で入力してください。");
+
+            string wContent = vItem.Content;
+            if (wContent != null && wContent.Length > 150) throw new ArgumentException("内容は150文字以内で入力してください。");
+        }
+
+        /// <summary>
         /// XMLで保存
         /// </summary>
         public void Export() {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using ToDoManager.Models;
+using ToDoManager.Services;
 
 namespace ToDoManager {
     /// <summary>
@@ -12,6 +13,8 @@ namespace ToDoManager {
         /// 編集対象のToDoアイテムを取得
         /// </summary>
         public TodoItem Item { get; private set; }
+
+        private readonly TodoService FService = new TodoService();
         #endregion
 
         #region 初期化
@@ -34,10 +37,20 @@ namespace ToDoManager {
         /// 入力内容をItemに反映しバリデーションする
         /// </summary>
         private void SaveItem() {
-            Item.Title = FTxtTitle.Text;
-            Item.Content = FTxtContent.Text;
-            Item.DueDate = FDtpDueDate.Value;
-            Item.IsCompleted = FChkDone.Checked;
+            var wTempItem = new TodoItem {
+                Id = Item.Id,
+                Title = FTxtTitle.Text,
+                Content = FTxtContent.Text,
+                DueDate = FDtpDueDate.Value,
+                IsCompleted = FChkDone.Checked
+            };
+            try {
+                FService.Validate(wTempItem);
+            } catch (ArgumentException wEx) {
+                MessageBox.Show(this, wEx.Message, "入力エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            Item = wTempItem;
 
             DialogResult = DialogResult.OK;
             Close();

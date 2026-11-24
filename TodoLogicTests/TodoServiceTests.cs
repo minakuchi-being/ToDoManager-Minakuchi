@@ -62,7 +62,7 @@ namespace ToDoManagerTests {
         }
 
         /// <summary>
-        /// Validateで、内容が未設定のとき、例外が発生すること
+        /// Validateで、内容が未設定のとき、例外が発生しないこと
         /// </summary>
         [Test]
         public void Validate_Contentがnullのとき_例外が発生しない() {
@@ -93,32 +93,30 @@ namespace ToDoManagerTests {
         }
 
         /// <summary>
-        /// Validateで、タイトルの文字数が不正のとき、例外が発生すること
-        /// </summary>
-        /// <param name="vLength">タイトルの長さ</param>
-        [TestCase(0, Description = "タイトルが0文字（未入力）")]
-        [TestCase(21, Description = "タイトルが21文字（上限超過）")]
-        public void Validate_Titleが0文字または21文字以上のとき_例外がスローされる(int vLength) {
-            var wItem = new TodoItem { Title = new string('a', vLength) };
-            Assert.That(() => TodoService.Validate(wItem), Throws.ArgumentException);
-        }
-
-        /// <summary>
-        /// Validateで、タイトルが空白だけのとき、例外が発生すること
+        /// Validateで、タイトルが空欄のとき、例外が発生すること
         /// </summary>
         /// <param name="vTitle">タイトル</param>
+        [TestCase("", Description = "タイトルが未入力")]
         [TestCase(" ", Description = "タイトルがスペースのみ（半角）")]
         [TestCase("　", Description = "タイトルがスペースのみ（全角）")]
-        public void Validate_Titleが空白だけのとき_例外がスローされる(string vTitle) {
+        public void Validate_Titleが空欄のとき_例外が発生する(string vTitle) {
             var wItem = new TodoItem { Title = vTitle };
             Assert.That(() => TodoService.Validate(wItem), Throws.ArgumentException);
         }
 
         /// <summary>
-        /// Validateで、内容の文字数が上限を超えるとき、例外が発生すること
+        /// Validateで、タイトルの文字数が上限を超えたとき、例外が発生すること
+        /// </summary>
+        public void Validate_Titleが21文字以上とき_例外が発生する() {
+            var wItem = new TodoItem { Title = new string('a', 21) };
+            Assert.That(() => TodoService.Validate(wItem), Throws.ArgumentException);
+        }
+
+        /// <summary>
+        /// Validateで、内容の文字数が上限を超えたとき、例外が発生すること
         /// </summary>
         [Test]
-        public void Validate_Contentが151文字以上のとき_例外がスローされる() {
+        public void Validate_Contentが151文字以上のとき_例外が発生する() {
             var wItem = new TodoItem { Title = "Test", Content = new string('a', 151) };
             Assert.That(() => TodoService.Validate(wItem), Throws.ArgumentException);
         }

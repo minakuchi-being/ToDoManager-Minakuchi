@@ -83,7 +83,7 @@ namespace ToDoManager.Services {
         /// ToDoアイテムのバリデート
         /// </summary>
         /// <param name="vItem">チェックするアイテム</param>
-        public void Validate(TodoItem vItem) {
+        public static void Validate(TodoItem vItem) {
             if (vItem == null) throw new ArgumentNullException(nameof(vItem));
 
             string wTitle = vItem.Title;
@@ -92,7 +92,7 @@ namespace ToDoManager.Services {
             if (wTitle.Length > 20) throw new ArgumentException("タイトルは20文字以内で入力してください。");
 
             string wContent = vItem.Content;
-            if (wContent != null && wContent.Length > 150) throw new ArgumentException("内容は150文字以内で入力してください。");
+            if (wContent?.Length > 150) throw new ArgumentException("内容は150文字以内で入力してください。");
         }
 
         /// <summary>

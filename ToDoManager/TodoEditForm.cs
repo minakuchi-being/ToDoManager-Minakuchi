@@ -13,8 +13,6 @@ namespace ToDoManager {
         /// 編集対象のToDoアイテムを取得
         /// </summary>
         public TodoItem Item { get; private set; }
-
-        private readonly TodoService FService = new TodoService();
         #endregion
 
         #region 初期化
@@ -45,7 +43,7 @@ namespace ToDoManager {
                 IsCompleted = FChkDone.Checked
             };
             try {
-                FService.Validate(wTempItem);
+                TodoService.Validate(wTempItem);
             } catch (ArgumentException wEx) {
                 MessageBox.Show(this, wEx.Message, "入力エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;

@@ -14,6 +14,8 @@ namespace ToDoManager.Services {
         private List<TodoItem> FItems = new List<TodoItem>();
         private int FNextId = 1;
         private string C_FilePath = "todos.xml";
+        private const int C_TitleMaxLength = 20;
+        private const int C_ContentMaxLength = 150;
         #endregion
 
         /// <summary>
@@ -89,10 +91,10 @@ namespace ToDoManager.Services {
             string wTitle = vItem.Title;
             if (string.IsNullOrEmpty(wTitle)) throw new ArgumentException("タイトルを入力してください。");
             if (wTitle.All(char.IsWhiteSpace)) throw new ArgumentException("タイトルに空白のみは設定できません。");
-            if (wTitle.Length > 20) throw new ArgumentException("タイトルは20文字以内で入力してください。");
+            if (wTitle.Length > C_TitleMaxLength) throw new ArgumentException($"タイトルは{C_TitleMaxLength}文字以内で入力してください。");
 
             string wContent = vItem.Content;
-            if (wContent?.Length > 150) throw new ArgumentException("内容は150文字以内で入力してください。");
+            if (wContent?.Length > C_ContentMaxLength) throw new ArgumentException($"内容は{C_ContentMaxLength}文字以内で入力してください。");
         }
 
         /// <summary>

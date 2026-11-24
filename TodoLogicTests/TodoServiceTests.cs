@@ -107,7 +107,8 @@ namespace ToDoManagerTests {
         /// <summary>
         /// Validateで、タイトルの文字数が上限を超えたとき、例外が発生すること
         /// </summary>
-        public void Validate_Titleが21文字以上とき_例外が発生する() {
+        [Test]
+        public void Validate_Titleが21文字以上のとき_例外が発生する() {
             var wItem = new TodoItem { Title = new string('a', 21) };
             Assert.That(() => TodoService.Validate(wItem), Throws.ArgumentException);
         }

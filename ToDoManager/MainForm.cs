@@ -26,7 +26,7 @@ namespace ToDoManager {
             FLstItems.Items.Clear();
             foreach (var wItem in FService.GetItems()) FLstItems.Items.Add(wItem);
 
-            UpdateFields(FLstItems.SelectedItem as TodoItem);
+            UpdateFields();
         }
 
         /// <summary>
@@ -134,10 +134,7 @@ namespace ToDoManager {
                 MessageBox.Show(this, "指定ファイルが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void FLstItems_SelectedIndexChanged(object sender, EventArgs e) {
-            var wSelected = FLstItems.SelectedItem as TodoItem;
-            UpdateFields(wSelected);
-        }
+        private void FLstItems_SelectedIndexChanged(object sender, EventArgs e) => UpdateFields(FLstItems.SelectedItem as TodoItem);
         #endregion
     }
 }

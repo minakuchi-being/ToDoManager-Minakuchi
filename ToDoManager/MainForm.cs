@@ -13,6 +13,7 @@ namespace ToDoManager {
 
         public MainForm() {
             InitializeComponent();
+            SetFieldsReadOnly();
             UpdateList();
         }
         #endregion
@@ -24,6 +25,18 @@ namespace ToDoManager {
         private void UpdateList() {
             FLstItems.Items.Clear();
             foreach (var wItem in FService.GetItems()) FLstItems.Items.Add(wItem);
+
+            UpdateFields(FLstItems.SelectedItem as TodoItem);
+        }
+
+        /// <summary>
+        /// フィールドを読み取り専用にする
+        /// </summary>
+        private void SetFieldsReadOnly() {
+            FTxtTitle.ReadOnly = true;
+            FTxtContent.ReadOnly = true;
+            FDtpDueDate.Enabled = false;
+            FChkDone.Enabled = false;
         }
         #endregion
 
@@ -86,6 +99,24 @@ namespace ToDoManager {
                 MessageBox.Show(this, $"削除に失敗しました：{wEx.Message}", "システムエラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// 右側フィールドの更新
+        /// </summary>
+        /// <param name="vItem">表示するTodoアイテム。デフォルト引き数（null）なら初期表示</param>
+        private void UpdateFields(TodoItem vItem = null) {
+            if (vItem == null) {
+                FTxtTitle.Text = string.Empty;
+                FTxtContent.Text = string.Empty;
+                FDtpDueDate.Value = DateTime.Today;
+                FChkDone.Checked = false;
+                return;
+            }
+            FTxtTitle.Text = vItem.Title;
+            FTxtContent.Text = vItem.Content;
+            FDtpDueDate.Value = vItem.DueDate;
+            FChkDone.Checked = vItem.IsCompleted;
+        }
         #endregion
 
         #region イベントハンドラ
@@ -102,6 +133,10 @@ namespace ToDoManager {
             } else {
                 MessageBox.Show(this, "指定ファイルが存在しません", "エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void FLstItems_SelectedIndexChanged(object sender, EventArgs e) {
+            var wSelected = FLstItems.SelectedItem as TodoItem;
+            UpdateFields(wSelected);
         }
         #endregion
     }

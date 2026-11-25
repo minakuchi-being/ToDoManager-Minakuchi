@@ -5,12 +5,12 @@ VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManager", "ToDoManager\ToDoManager.csproj", "{A626AADE-082F-4171-8AE0-8972E6727DA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManagerTests", "TodoLogicTests\ToDoManagerTests.csproj", "{2771557B-AFAF-4E07-A91B-9C81038D71A7}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ソリューション項目", "ソリューション項目", "{2022CB0F-8BAF-F49E-0C48-8EF4C96EC109}"
 	ProjectSection(SolutionItems) = preProject
 		CodeReading.md = CodeReading.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoManagerTests", "TodoLogicTests\ToDoManagerTests.csproj", "{2771557B-AFAF-4E07-A91B-9C81038D71A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

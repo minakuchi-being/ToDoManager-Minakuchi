@@ -13,7 +13,7 @@ namespace ToDoManager.Services {
         #region フィールド
         private List<TodoItem> FItems = new List<TodoItem>();
         private int FNextId = 1;
-        private string C_FilePath = "todos.xml";
+        private const string C_FilePath = "todos.xml";
         private const int C_TitleMaxLength = 20;
         private const int C_ContentMaxLength = 150;
         #endregion
@@ -112,8 +112,7 @@ namespace ToDoManager.Services {
             if (!File.Exists(C_FilePath)) return false;
 
             var wSerializer = new XmlSerializer(typeof(List<TodoItem>));
-            var wStreamReader = new StreamReader(C_FilePath);
-            FItems = (List<TodoItem>)wSerializer.Deserialize(wStreamReader);
+            using (var wReader = new StreamReader(C_FilePath)) FItems = (List<TodoItem>)wSerializer.Deserialize(wReader);
 
             FNextId = FItems.Any() ? FItems.Max(x => x.Id) + 1 : 1;
 

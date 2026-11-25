@@ -87,7 +87,7 @@
             this.FBtnSave.Name = "FBtnSave";
             this.FBtnSave.Size = new System.Drawing.Size(80, 30);
             this.FBtnSave.TabIndex = 0;
-            this.FBtnSave.Text = "保存(S)";
+            this.FBtnSave.Text = "保存(&S)";
             this.FBtnSave.UseVisualStyleBackColor = true;
             this.FBtnSave.Click += new System.EventHandler(this.FBtnSave_Click);
             // 

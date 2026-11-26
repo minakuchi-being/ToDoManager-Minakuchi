@@ -100,7 +100,6 @@ namespace ToDoManager {
             }
         }
 
-
         /// <summary>
         /// アイテムを読み込む
         /// </summary>

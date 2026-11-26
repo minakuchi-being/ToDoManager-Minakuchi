@@ -175,14 +175,14 @@
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadToolStripMenuItem.Text = "読込(L)";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.FBtnXmlLoad_Click);
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.FBtnLoad_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "保存(S)";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.FBtnXml_Click);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.FBtnSave_Click);
             // 
             // editCategoryToolStripMenuItem
             // 
@@ -197,21 +197,21 @@
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.addToolStripMenuItem.Text = "追加(A)";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.FBtnAdd_Click);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.deleteToolStripMenuItem.Text = "削除(D)";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.FBtnDelete_Click);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.editToolStripMenuItem.Text = "編集(E)";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.FBtnEdit_Click);
             // 
@@ -227,14 +227,14 @@
             // sortByDueDateToolStripMenuItem
             // 
             this.sortByDueDateToolStripMenuItem.Name = "sortByDueDateToolStripMenuItem";
-            this.sortByDueDateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sortByDueDateToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.sortByDueDateToolStripMenuItem.Text = "期限順(O)";
             this.sortByDueDateToolStripMenuItem.Click += new System.EventHandler(this.SortByDueDateToolStripMenuItem_Click);
             // 
             // sortByAddedOrderToolStripMenuItem
             // 
             this.sortByAddedOrderToolStripMenuItem.Name = "sortByAddedOrderToolStripMenuItem";
-            this.sortByAddedOrderToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.sortByAddedOrderToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
             this.sortByAddedOrderToolStripMenuItem.Text = "追加順(T)";
             this.sortByAddedOrderToolStripMenuItem.Click += new System.EventHandler(this.SortByAddedOrderToolStripMenuItem_Click);
             // 

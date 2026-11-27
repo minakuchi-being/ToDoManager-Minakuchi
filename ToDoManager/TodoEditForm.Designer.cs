@@ -8,11 +8,13 @@
         private System.ComponentModel.IContainer components = null;
 
         // コントロール宣言（F接頭辞＋パスカル型）
+        private System.Windows.Forms.Button FBtnSave;
+        private System.Windows.Forms.CheckBox FChkDone;
+        private System.Windows.Forms.DateTimePicker FDtpDueDate;
+        private System.Windows.Forms.Label FEditTitleLabel;
+        private System.Windows.Forms.Label FEditContentLabel;
         private System.Windows.Forms.TextBox FTxtTitle;
         private System.Windows.Forms.TextBox FTxtContent;
-        private System.Windows.Forms.DateTimePicker FDtpDueDate;
-        private System.Windows.Forms.CheckBox FChkDone;
-        private System.Windows.Forms.Button FBtnSave;
 
         /// <summary>
         /// 使用中のリソースをすべてクリーンアップします。
@@ -87,7 +89,7 @@
             this.FBtnSave.Name = "FBtnSave";
             this.FBtnSave.Size = new System.Drawing.Size(80, 30);
             this.FBtnSave.TabIndex = 0;
-            this.FBtnSave.Text = "保存(S)";
+            this.FBtnSave.Text = "保存(&S)";
             this.FBtnSave.UseVisualStyleBackColor = true;
             this.FBtnSave.Click += new System.EventHandler(this.FBtnSave_Click);
             // 
@@ -123,6 +125,7 @@
             this.Controls.Add(this.FBtnSave);
             this.MinimumSize = new System.Drawing.Size(267, 314);
             this.Name = "TodoEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ToDo編集";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -130,8 +133,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label FEditTitleLabel;
-        private System.Windows.Forms.Label FEditContentLabel;
     }
 }

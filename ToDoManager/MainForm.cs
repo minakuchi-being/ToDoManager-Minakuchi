@@ -164,7 +164,5 @@ namespace ToDoManager {
         private void SortByAddedOrderToolStripMenuItem_Click(object sender, EventArgs e) => SortItemsByAddedOrder();
         private void FLstItems_SelectedIndexChanged(object sender, EventArgs e) => UpdateFields(FLstItems.SelectedItem as TodoItem);
         #endregion
-
-
     }
 }

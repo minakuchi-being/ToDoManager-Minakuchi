@@ -8,21 +8,29 @@
         private System.ComponentModel.IContainer components = null;
 
         // コントロール宣言（F接頭辞＋パスカル型）
-        private System.Windows.Forms.TextBox FTxtTitle;
-        private System.Windows.Forms.TextBox FTxtContent;
-        private System.Windows.Forms.DateTimePicker FDtpDueDate;
-        private System.Windows.Forms.CheckBox FChkDone;
-        private System.Windows.Forms.ListBox FLstItems;
         private System.Windows.Forms.Button FBtnAdd;
+        private System.Windows.Forms.Button FBtnDelete;
+        private System.Windows.Forms.Button FBtnEdit;
+        private System.Windows.Forms.Button FBtnLoad;
+        private System.Windows.Forms.Button FBtnSave;
+        private System.Windows.Forms.CheckBox FChkDone;
+        private System.Windows.Forms.DateTimePicker FDtpDueDate;
+        private System.Windows.Forms.Label FTitleLabel;
+        private System.Windows.Forms.Label FContentLabel;
+        private System.Windows.Forms.ListBox FLstItems;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editCategoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sortByDueDateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sortByAddedOrderToolStripMenuItem;
+        private System.Windows.Forms.TextBox FTxtTitle;
+        private System.Windows.Forms.TextBox FTxtContent;
 
         /// <summary>
         /// 使用中のリソースをすべてクリーンアップします。
@@ -305,6 +313,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(447, 414);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ToDo管理";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -314,14 +323,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label FTitleLabel;
-        private System.Windows.Forms.Label FContentLabel;
-        private System.Windows.Forms.Button FBtnDelete;
-        private System.Windows.Forms.Button FBtnEdit;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private System.Windows.Forms.Button FBtnLoad;
-        private System.Windows.Forms.Button FBtnSave;
     }
 }

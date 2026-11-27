@@ -13,7 +13,7 @@ namespace ToDoManager.Services {
         #region フィールド
         private List<TodoItem> FItems = new List<TodoItem>();
         private int FNextId = 1;
-        private string C_FilePath = "todos.xml";
+        private const string C_FilePath = "todos.xml";
         private const int C_TitleMaxLength = 20;
         private const int C_ContentMaxLength = 150;
         #endregion
@@ -112,8 +112,7 @@ namespace ToDoManager.Services {
             if (!File.Exists(C_FilePath)) return false;
 
             var wSerializer = new XmlSerializer(typeof(List<TodoItem>));
-            var wStreamReader = new StreamReader(C_FilePath);
-            FItems = (List<TodoItem>)wSerializer.Deserialize(wStreamReader);
+            using (var wReader = new StreamReader(C_FilePath)) FItems = (List<TodoItem>)wSerializer.Deserialize(wReader);
 
             FNextId = FItems.Any() ? FItems.Max(x => x.Id) + 1 : 1;
 
@@ -124,26 +123,14 @@ namespace ToDoManager.Services {
         /// 期限順にソート
         /// </summary>
         public void SortByDueDate() {
-            var wTodoItems = FItems.OrderBy(x => x.DueDate).ToList();
+            FItems = FItems.OrderBy(x => x.DueDate).ToList();
         }
 
         /// <summary>
         /// 追加順にソート
         /// </summary>
         public void SortByAddedOrder() {
-            for (int i = 0; i < FItems.Count - 1; i++) {
-                int wMinIndex = i;
-                for (int j = i + 1; j < FItems.Count; j++) {
-                    if (FItems[j].Id < FItems[wMinIndex].Id) {
-                        wMinIndex = j;
-                    }
-                }
-                if (wMinIndex != i) {
-                    var wTemp = FItems[i];
-                    FItems[i] = FItems[wMinIndex];
-                    FItems[wMinIndex] = wTemp;
-                }
-            }
+            FItems = FItems.OrderBy(x => x.Id).ToList();
         }
         #endregion
     }

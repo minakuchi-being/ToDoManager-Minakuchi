@@ -13,6 +13,7 @@ namespace ToDoManager {
 
         public MainForm() {
             InitializeComponent();
+            SetFieldsReadOnly();
             UpdateList();
         }
         #endregion
@@ -24,6 +25,18 @@ namespace ToDoManager {
         private void UpdateList() {
             FLstItems.Items.Clear();
             foreach (var wItem in FService.GetItems()) FLstItems.Items.Add(wItem);
+
+            UpdateFields();
+        }
+
+        /// <summary>
+        /// フィールドを読み取り専用にする
+        /// </summary>
+        private void SetFieldsReadOnly() {
+            FTxtTitle.ReadOnly = true;
+            FTxtContent.ReadOnly = true;
+            FDtpDueDate.Enabled = false;
+            FChkDone.Enabled = false;
         }
         #endregion
 
@@ -105,6 +118,40 @@ namespace ToDoManager {
         private void SaveItems() {
             FService.Export();
         }
+
+        /// <summary>
+        /// アイテムを期限順ソート
+        /// </summary>
+        private void SortItemsByDueDate() {
+            FService.SortByDueDate();
+            UpdateList();
+        }
+
+        /// <summary>
+        /// アイテムを追加順ソート
+        /// </summary>
+        private void SortItemsByAddedOrder() {
+            FService.SortByAddedOrder();
+            UpdateList();
+        }
+
+        /// <summary>
+        /// 右側フィールドの更新
+        /// </summary>
+        /// <param name="vItem">表示するTodoアイテム。デフォルト引き数（null）なら初期表示</param>
+        private void UpdateFields(TodoItem vItem = null) {
+            if (vItem == null) {
+                FTxtTitle.Text = string.Empty;
+                FTxtContent.Text = string.Empty;
+                FDtpDueDate.Value = DateTime.Today;
+                FChkDone.Checked = false;
+                return;
+            }
+            FTxtTitle.Text = vItem.Title;
+            FTxtContent.Text = vItem.Content;
+            FDtpDueDate.Value = vItem.DueDate;
+            FChkDone.Checked = vItem.IsCompleted;
+        }
         #endregion
 
         #region イベントハンドラ
@@ -113,8 +160,9 @@ namespace ToDoManager {
         private void FBtnDelete_Click(object sender, EventArgs e) => DeleteItem();
         private void FBtnLoad_Click(object sender, EventArgs e) => LoadItems();
         private void FBtnSave_Click(object sender, EventArgs e) => SaveItems();
-        private void SortByDueDateToolStripMenuItem_Click(object sender, EventArgs e) => FService.SortByDueDate();
-        private void SortByAddedOrderToolStripMenuItem_Click(object sender, EventArgs e) => FService.SortByAddedOrder();
+        private void SortByDueDateToolStripMenuItem_Click(object sender, EventArgs e) => SortItemsByDueDate();
+        private void SortByAddedOrderToolStripMenuItem_Click(object sender, EventArgs e) => SortItemsByAddedOrder();
+        private void FLstItems_SelectedIndexChanged(object sender, EventArgs e) => UpdateFields(FLstItems.SelectedItem as TodoItem);
         #endregion
     }
 }

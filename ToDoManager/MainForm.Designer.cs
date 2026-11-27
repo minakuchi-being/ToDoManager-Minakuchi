@@ -116,6 +116,7 @@
             this.FLstItems.Name = "FLstItems";
             this.FLstItems.Size = new System.Drawing.Size(412, 448);
             this.FLstItems.TabIndex = 1;
+            this.FLstItems.SelectedIndexChanged += new System.EventHandler(this.FLstItems_SelectedIndexChanged);
             // 
             // FBtnAdd
             // 

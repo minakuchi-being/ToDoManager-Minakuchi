@@ -114,7 +114,7 @@
             this.FLstItems.Location = new System.Drawing.Point(8, 55);
             this.FLstItems.MinimumSize = new System.Drawing.Size(100, 200);
             this.FLstItems.Name = "FLstItems";
-            this.FLstItems.Size = new System.Drawing.Size(412, 448);
+            this.FLstItems.Size = new System.Drawing.Size(412, 292);
             this.FLstItems.TabIndex = 1;
             this.FLstItems.SelectedIndexChanged += new System.EventHandler(this.FLstItems_SelectedIndexChanged);
             // 
@@ -264,7 +264,7 @@
             // 
             // FBtnLoad
             // 
-            this.FBtnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FBtnLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.FBtnLoad.Location = new System.Drawing.Point(517, 317);
             this.FBtnLoad.Name = "FBtnLoad";
             this.FBtnLoad.Size = new System.Drawing.Size(56, 30);
@@ -275,7 +275,7 @@
             // 
             // FBtnSave
             // 
-            this.FBtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.FBtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.FBtnSave.Location = new System.Drawing.Point(589, 317);
             this.FBtnSave.Name = "FBtnSave";
             this.FBtnSave.Size = new System.Drawing.Size(56, 30);
@@ -288,7 +288,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 538);
+            this.ClientSize = new System.Drawing.Size(690, 382);
             this.Controls.Add(this.FBtnSave);
             this.Controls.Add(this.FBtnLoad);
             this.Controls.Add(this.FBtnEdit);

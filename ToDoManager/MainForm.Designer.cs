@@ -175,14 +175,14 @@
             this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loadToolStripMenuItem.Text = "読込(L)";
-            this.loadToolStripMenuItem.Click += new System.EventHandler(this.FBtnXmlLoad_Click);
+            this.loadToolStripMenuItem.Click += new System.EventHandler(this.FBtnLoad_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveToolStripMenuItem.Text = "保存(S)";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.FBtnXml_Click);
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.FBtnSave_Click);
             // 
             // editCategoryToolStripMenuItem
             // 
